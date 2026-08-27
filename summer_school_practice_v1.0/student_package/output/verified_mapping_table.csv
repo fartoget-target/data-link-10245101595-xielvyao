@@ -1,0 +1,31 @@
+﻿source_format,input_field,unified_field,mapping_rule,unit_conversion,null_strategy,evidence,verified
+OpenSky,target_id,track_id,六位小写十六进制，保留前导0,无,缺失→null,source_field_definitions.md track_id,True
+OpenSky,latest_time,timestamp,直接映射Unix秒,无,空值→null；必须为正整数,source_field_definitions.md timestamp,True
+OpenSky,time_source,quality.time_source,直接映射,无,position_time/last_contact_fallback,source_field_definitions.md time_source,True
+OpenSky,callsign,identity.callsign,直接映射,无,空值→null,source_field_definitions.md callsign,True
+OpenSky,lat,position.lat,直接映射,无,空值→null,source_field_definitions.md position.lat,True
+OpenSky,lon,position.lon,直接映射,无,空值→null,source_field_definitions.md position.lon,True
+OpenSky,altitude,position.alt,直接映射,无,空值→null,source_field_definitions.md position.alt,True
+OpenSky,alt_type,position.alt_type,直接映射,无,barometric/geometric/unknown,source_field_definitions.md position.alt_type,True
+OpenSky,speed,motion.speed,直接映射,无,空值→null,source_field_definitions.md motion.speed,True
+OpenSky,heading,motion.heading,直接映射,无,空值→null；0<=heading<360,source_field_definitions.md motion.heading,True
+OpenSky,vertical_rate,motion.vertical_rate,直接映射,无,空值→null,source_field_definitions.md motion.vertical_rate,True
+OpenSky,on_ground,status.on_ground,转为布尔值,无,缺失→false,source_field_definitions.md status.on_ground,True
+OpenSky,lat/lon,quality.position_valid,经纬度非空且合法,无,任一为空→false,source_field_definitions.md position_valid,True
+OpenSky,latest_time(有效性),quality.time_valid,latest_time为正整数,无,空值→false,source_field_definitions.md time_valid,True
+OpenSky,message_valid,quality.message_valid,源记录结构校验结果,无,缺失→false,source_field_definitions.md message_valid,True
+TeachingLink,target_id,track_id,六位小写十六进制，保留前导0,无,缺失→null,source_field_definitions.md track_id,True
+TeachingLink,latest_time,timestamp,直接映射Unix秒,无,必须为正整数,source_field_definitions.md timestamp,True
+TeachingLink,status_flags.bit2,quality.time_source,bit2=0→position_time；bit2=1→last_contact_fallback,无,无,source_field_definitions.md time_source,True
+TeachingLink,callsign+validity_flags.bit6,identity.callsign,bit6=0→null；bit6=1→去除补0,无,有效位0→null,source_field_definitions.md callsign,True
+TeachingLink,latitude_code+validity_flags.bit0,position.lat,bit0=0→null；bit0=1→code/(2^22-1)×180-90,code/(2^22-1)×180-90,有效位0→null,source_field_definitions.md position.lat,True
+TeachingLink,longitude_code+validity_flags.bit1,position.lon,bit1=0→null；bit1=1→code/(2^22-1)×360-180,code/(2^22-1)×360-180,有效位0→null,source_field_definitions.md position.lon,True
+TeachingLink,altitude_code+validity_flags.bit2,position.alt,bit2=0→null；bit2=1→code-1000,code-1000（米）,有效位0→null,source_field_definitions.md position.alt,True
+TeachingLink,status_flags.bit1,position.alt_type,alt有效时 bit1=0→barometric、bit1=1→geometric；alt无效→unknown,无,alt无效→unknown,source_field_definitions.md position.alt_type,True
+TeachingLink,speed_code+validity_flags.bit3,motion.speed,bit3=0→null；bit3=1→code×0.1,code×0.1（m/s）,有效位0→null,source_field_definitions.md motion.speed,True
+TeachingLink,heading_code+validity_flags.bit4,motion.heading,bit4=0→null；bit4=1→code×0.01且<360,code×0.01（度）,有效位0→null,source_field_definitions.md motion.heading,True
+TeachingLink,vertical_rate_code+validity_flags.bit5,motion.vertical_rate,bit5=0→null；bit5=1→code×0.01-327.68,code×0.01-327.68（m/s）,有效位0→null,source_field_definitions.md motion.vertical_rate,True
+TeachingLink,status_flags.bit0,status.on_ground,bit0=1→true；bit0=0→false,无,无,source_field_definitions.md status.on_ground,True
+TeachingLink,纬经有效位+解码范围,quality.position_valid,纬经有效位均1且解码值合法,无,任一无效→false,source_field_definitions.md position_valid,True
+TeachingLink,timestamp+帧接收结果,quality.time_valid,timestamp为正整数且帧通过接收判据,无,帧无效→false,source_field_definitions.md time_valid,True
+TeachingLink,message_valid,quality.message_valid,完整帧接收判据；不得扩大为来源可信,无,缺失→false,source_field_definitions.md message_valid,True

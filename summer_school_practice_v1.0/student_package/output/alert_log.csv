@@ -1,0 +1,5 @@
+﻿alert_time,target_id,alert_type,severity,field,description
+1710000120,780def,POSITION_MISSING,HIGH,lat,纬度或经度缺失
+1710000120,000001,DATA_DELAYED,MEDIUM,timestamp,数据延迟超过60秒
+1710000120,780bbb,HEADING_OUT_OF_RANGE,MEDIUM,heading,航向越界(需0<=heading<360)
+1710000120,780aaa,DUPLICATE_RECORD,MEDIUM,timestamp,target_id与timestamp均重复

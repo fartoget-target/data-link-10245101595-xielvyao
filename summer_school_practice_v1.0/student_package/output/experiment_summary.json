@@ -1,0 +1,12 @@
+{
+  "dataset": "OpenSky Central Europe three-snapshot teaching dataset",
+  "snapshot_count": 3,
+  "source_record_count": 71,
+  "encoded_frame_count": 71,
+  "decoded_frame_count": 71,
+  "valid_frame_count": 71,
+  "track_record_count": 71,
+  "situation_count": 24,
+  "precision_total": 426,
+  "precision_passed": 426
+}

@@ -1,0 +1,10 @@
+﻿record_no,target_id,stage,field,problem_type,value,description
+3,780bad,parse,timestamp,REQUIRED_FIELD_MISSING,,time_position与last_contact均为空，无法生成正常帧
+4,780bee,parse,heading,OUT_OF_RANGE,360.0,航向越界(需0<=heading<360)
+err0,,decode,,LENGTH_ERROR,,LENGTH_ERROR
+err1,780abc,decode,,MAGIC_ERROR,,MAGIC_ERROR
+err2,780abc,decode,,VERSION_ERROR,,VERSION_ERROR
+err3,780abc,decode,,MESSAGE_TYPE_ERROR,,MESSAGE_TYPE_ERROR
+err4,780abc,decode,,CHECKSUM_ERROR,,CHECKSUM_ERROR
+err5,780abc,decode,,RESERVED_BITS_ERROR,,RESERVED_BITS_ERROR
+err6,780abc,decode,,FLAG_VALUE_INCONSISTENCY,,FLAG_VALUE_INCONSISTENCY

@@ -12,25 +12,25 @@
 
 ## 字段布局
 
-| 字段 | 类型/长度 | 偏移 | 规则 |
-|---|---:|---:|---|
-| magic | uint16/2 | 0-1 | 固定 `0x4453` |
-| version | uint8/1 | 2 | 固定 `1` |
-| message_type | uint8/1 | 3 | 固定 `1` |
-| message_length | uint16/2 | 4-5 | 固定 `41` |
-| message_seq | uint16/2 | 6-7 | 达到 65535 后按模 65536 回绕 |
-| timestamp | uint32/4 | 8-11 | 优先位置时间，必要时回退最近联系时间 |
-| target_id | uint24/3 | 12-14 | 六位 icao24，保留前导 0，必需 |
-| callsign | ASCII/8 | 15-22 | 有效时 1-8 字节，不足补 0，不静默截断 |
-| latitude_code | 22 位有效/3 | 23-25 | 最高 2 位保留为 0 |
-| longitude_code | 22 位有效/3 | 26-28 | 最高 2 位保留为 0 |
-| altitude_code | uint16/2 | 29-30 | 1 m 分辨率，物理偏置 1000 m |
-| speed_code | uint16/2 | 31-32 | 0.1 m/s 分辨率 |
-| heading_code | uint16/2 | 33-34 | 0.01° 分辨率，`0 <= heading < 360` |
-| vertical_rate_code | uint16/2 | 35-36 | 0.01 m/s，物理偏置 327.68 m/s |
-| status_flags | uint8/1 | 37 | 状态与来源 |
-| validity_flags | uint8/1 | 38 | 可空字段有效性 |
-| checksum | uint16/2 | 39-40 | 前 39 字节之和模 65536 |
+| 字段                 | 类型/长度    | 偏移    | 规则                             |
+| ------------------ | --------:| -----:| ------------------------------ |
+| magic              | uint16/2 | 0-1   | 固定 `0x4453`                    |
+| version            | uint8/1  | 2     | 固定 `1`                         |
+| message_type       | uint8/1  | 3     | 固定 `1`                         |
+| message_length     | uint16/2 | 4-5   | 固定 `41`                        |
+| message_seq        | uint16/2 | 6-7   | 达到 65535 后按模 65536 回绕          |
+| timestamp          | uint32/4 | 8-11  | 优先位置时间，必要时回退最近联系时间             |
+| target_id          | uint24/3 | 12-14 | 六位 icao24，保留前导 0，必需            |
+| callsign           | ASCII/8  | 15-22 | 有效时 1-8 字节，不足补 0，不静默截断         |
+| latitude_code      | 22 位有效/3 | 23-25 | 最高 2 位保留为 0                    |
+| longitude_code     | 22 位有效/3 | 26-28 | 最高 2 位保留为 0                    |
+| altitude_code      | uint16/2 | 29-30 | 1 m 分辨率，物理偏置 1000 m            |
+| speed_code         | uint16/2 | 31-32 | 0.1 m/s 分辨率                    |
+| heading_code       | uint16/2 | 33-34 | 0.01° 分辨率，`0 <= heading < 360` |
+| vertical_rate_code | uint16/2 | 35-36 | 0.01 m/s，物理偏置 327.68 m/s       |
+| status_flags       | uint8/1  | 37    | 状态与来源                          |
+| validity_flags     | uint8/1  | 38    | 可空字段有效性                        |
+| checksum           | uint16/2 | 39-40 | 前 39 字节之和模 65536               |
 
 ## 标志位
 
