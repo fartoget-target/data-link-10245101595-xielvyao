@@ -2,9 +2,9 @@
 
 ## 基本信息
 
-- 姓名：[请填写]
-- 学号：[请填写]
-- GitHub用户名：[请填写]
+- 姓名：谢吕遥
+- 学号：10245101595
+- GitHub用户名：fartoget-target
 - Python版本：3.13.7
 - 是否使用SQLite：是
 - M4候选来源：学校预生成候选
@@ -62,6 +62,6 @@ M3.6 OpenSky 真实数据验证需单独运行：
 
 ## 最终提交信息
 
-- 仓库链接：[请填写]
-- 最终commit ID：[请填写]
-- 最后检查日期：[请填写]
+- 仓库链接：https://github.com/fartoget-target/data-link-10245101595-xielvyao.git
+- 最终commit ID：18214984da9e86058ceb64e408567a775321b8ee
+- 最后检查日期：2026.8.27
