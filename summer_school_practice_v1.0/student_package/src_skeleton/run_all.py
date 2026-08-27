@@ -428,7 +428,10 @@ def _write_result_note(alerts: list[dict[str, Any]]) -> None:
 
 
 def _write_submission_readme() -> None:
-    """生成 SUBMISSION_README.md（个人信息用占位符，提交前自行填写）。"""
+    """生成 SUBMISSION_README.md（个人信息用占位符，提交前自行填写）。已存在则不覆盖。"""
+    readme = STUDENT_PACKAGE_ROOT / "SUBMISSION_README.md"
+    if readme.exists():
+        return  # 已存在则不覆盖，保留人工填写的个人信息
     import sys
     pyver = f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
     content = f"""# M6综合运行说明
@@ -499,7 +502,7 @@ M3.6 OpenSky 真实数据验证需单独运行：
 - 最终commit ID：[请填写]
 - 最后检查日期：[请填写]
 """
-    (STUDENT_PACKAGE_ROOT / "SUBMISSION_README.md").write_text(content, encoding="utf-8")
+    readme.write_text(content, encoding="utf-8")
 
 
 def _write_presentation_outline() -> None:

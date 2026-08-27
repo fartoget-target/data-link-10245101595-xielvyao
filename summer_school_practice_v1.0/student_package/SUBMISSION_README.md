@@ -63,5 +63,5 @@ M3.6 OpenSky 真实数据验证需单独运行：
 ## 最终提交信息
 
 - 仓库链接：https://github.com/fartoget-target/data-link-10245101595-xielvyao.git
-- 最终commit ID：18214984da9e86058ceb64e408567a775321b8ee
+- 最终commit ID：9ed4348032fc43780ef6fd5c7378bf9c9eec2da2
 - 最后检查日期：2026.8.27
