@@ -128,7 +128,21 @@ def encode() -> None:
     for record_no, rec in enumerate(_records):
         if rec["timestamp"] is None or not rec["target_id"]:
             continue
-        _frames.append(encode_position_message(rec, message_seq))
+        try:
+            frame = encode_position_message(rec, message_seq)
+        except ValueError as exc:
+            # 越界不崩溃：记入 validation_log（stage=encode，OUT_OF_RANGE），跳过该条
+            _validation_rows.append({
+                "record_no": record_no,
+                "target_id": rec["target_id"] or "",
+                "stage": "encode",
+                "field": "",
+                "problem_type": "OUT_OF_RANGE",
+                "value": str(exc),
+                "description": "编码越界，跳过该记录",
+            })
+            continue
+        _frames.append(frame)
         _frame_records.append(rec)
         _frame_nos.append(record_no)
         message_seq += 1
